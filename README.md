@@ -1,16 +1,20 @@
-# React + Vite
+# Seed Society Nepal — Student Learning & Entrance Prep Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Seed Society is a full-stack educational web platform built to support over 500+ students across Nepal preparing for national competitive entrance examinations—specifically CEE (Medical) and IOE (Engineering)—as well as NEB Grade 11 and 12 curriculum.
 
-Currently, two official plugins are available:
+In our community, quality preparation resources and timely academic updates are often locked behind expensive coaching center fees or scattered across chaotic group chats. I developed this platform to serve as an organized, accessible hub where students can access curated study notes, check live exam routines, join scheduled classes, and connect directly with instructors for structured guidance.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Overview & Impact
 
-## React Compiler
+- **Centralized Study Resources**: Direct distribution of lecture notes, past exam papers, and practice sets categorized by subject and target grade.
+- **Academic Notice Board**: Real-time announcements for urgent exam schedules, class updates, and study tips.
+- **Course & Tuition Management**: Clean course catalog allowing students to request personalized faculty assignment and mentoring.
+- **Dedicated Admin Portal**: Comprehensive management interface for educators to organize student enrollments, publish notices, and maintain class schedules.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Technical Architecture
 
-## Expanding the Oxlint configuration
+Built with a focus on speed, responsive design, and intuitive user experience:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- **Frontend Core**: React, Vite, and modern JavaScript
+- **Interface & Styling**: Custom design system built from scratch using clean CSS variables, glassmorphism aesthetics, and responsive layout grids
+- **Backend & Security**: Role-based access control distinguishing student portals from administrative management dashboards, secure data persistence, and real-time state management
