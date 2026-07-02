@@ -26,8 +26,8 @@ export default function Navbar() {
 
   const navLinks = [
     { to: '/', label: 'Home' },
-    { to: '/#features', label: 'Features' },
-    { to: '/#subjects', label: 'Subjects' },
+    { to: '/#subjects', label: 'Programs' },
+    { to: '/#features', label: 'Capabilities' },
     { to: '/#testimonials', label: 'Testimonials' },
   ];
 
