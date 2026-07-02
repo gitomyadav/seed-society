@@ -1,20 +1,20 @@
-# Seed Society Nepal — Student Learning & Entrance Prep Portal
+# Seed Society Nepal Interactive Learning Platform
 
-Seed Society is a full-stack educational web platform built to support over 500+ students across Nepal preparing for national competitive entrance examinations—specifically CEE (Medical) and IOE (Engineering)—as well as NEB Grade 11 and 12 curriculum.
+Seed Society is an active online educational portal currently used by 500+ high school students in our local community who are preparing for national competitive entrance examinations including CEE Medical and IOE Engineering, alongside regular NEB Grade 11 and Grade 12 board studies.
 
-In our community, quality preparation resources and timely academic updates are often locked behind expensive coaching center fees or scattered across chaotic group chats. I developed this platform to serve as an organized, accessible hub where students can access curated study notes, check live exam routines, join scheduled classes, and connect directly with instructors for structured guidance.
+Instead of relying on fragmented group chats or switching back and forth across external video apps, this platform serves as an interactive self-contained learning environment. Students log in daily to access structured course modules, review verified study materials, check urgent academic routines, and connect with faculty mentors all in one place.
 
-## Overview & Impact
+## Platform Features
 
-- **Centralized Study Resources**: Direct distribution of lecture notes, past exam papers, and practice sets categorized by subject and target grade.
-- **Academic Notice Board**: Real-time announcements for urgent exam schedules, class updates, and study tips.
-- **Course & Tuition Management**: Clean course catalog allowing students to request personalized faculty assignment and mentoring.
-- **Dedicated Admin Portal**: Comprehensive management interface for educators to organize student enrollments, publish notices, and maintain class schedules.
+- **Self-Contained Study Modules**: Organized course materials where students read comprehensive lecture notes, solve past question banks, and review practice sheets directly inside the portal without needing external downloads or third party meeting tools.
+- **Interactive Course Enrollment**: Students explore available preparation packages and request direct profile allocation, giving them personalized access to dedicated subject curriculum.
+- **Live Notice Board**: Real time updates for daily study targets, exam routines, and academic alerts posted directly by course instructors.
+- **Role Based Portal Management**: Secure faculty tools that allow educators to manage active student profiles, publish study content, update routines, and monitor community learning progress.
 
-## Technical Architecture
+## Technical Overview
 
-Built with a focus on speed, responsive design, and intuitive user experience:
+The application is engineered for fast performance, high security, and seamless mobile responsiveness across varying internet speeds:
 
-- **Frontend Core**: React, Vite, and modern JavaScript
-- **Interface & Styling**: Custom design system built from scratch using clean CSS variables, glassmorphism aesthetics, and responsive layout grids
-- **Backend & Security**: Role-based access control distinguishing student portals from administrative management dashboards, secure data persistence, and real-time state management
+- **Frontend Architecture**: Built with React 18 and Vite using modern component modularity and efficient state hooks.
+- **Design System**: Responsive interface featuring custom CSS variables, subtle glassmorphic styling, smooth micro animations, and optimized layout grids.
+- **Data & Security**: Role based access control separating student environments from administrative dashboards, row level security policies, and real time database updates.
