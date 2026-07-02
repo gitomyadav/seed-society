@@ -7,6 +7,8 @@ import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import PendingApproval from './pages/PendingApproval';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
 import DashboardLayout from './pages/DashboardLayout';
 import DashboardOverview from './pages/DashboardOverview';
 import Materials from './pages/Materials';
@@ -137,6 +139,22 @@ function AppRoutes() {
         element={
           <PublicLayout showFooter={false}>
             <PendingApproval />
+          </PublicLayout>
+        }
+      />
+      <Route
+        path="/privacy"
+        element={
+          <PublicLayout showFooter={true}>
+            <Privacy />
+          </PublicLayout>
+        }
+      />
+      <Route
+        path="/terms"
+        element={
+          <PublicLayout showFooter={true}>
+            <Terms />
           </PublicLayout>
         }
       />
