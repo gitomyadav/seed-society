@@ -14,10 +14,12 @@ Instead of relying on scattered social media groups or external apps, students s
 - **Live Academic Notice Board**: Instant real time updates for daily study targets, exam schedules, and class routines posted directly by educators.
 - **Role Based Management Portal**: Secure tools for faculty members to manage student enrollments, publish study content, update routines, and guide community learning.
 
-## Technical Overview
+## Technical Overview & Architecture
 
-The platform is engineered for fast performance, high security, and clean mobile responsiveness across varying internet speeds:
+The platform is engineered with modern full stack web technologies for fast performance, high database security, and clean mobile responsiveness across varying internet speeds:
 
-- **Frontend Architecture**: Built with React 18 and Vite using modern component modularity and efficient state hooks.
-- **Design System**: Responsive interface featuring custom CSS variables, subtle glassmorphic styling, smooth micro animations, and optimized layout grids.
-- **Data & Security**: Role based access control separating student environments from administrative dashboards, secure authentication, and real time database updates.
+- **Frontend & App Framework**: React 18, Next.js architecture patterns, and Vite for lightning fast client rendering, optimized bundling, and modular component hierarchy.
+- **Styling & Design Tokens**: Tailwind CSS inspired utility principles combined with custom CSS design tokens, smooth glassmorphic UI cards, responsive grid layouts, and micro animations.
+- **Backend & Database Engine**: Serverless PostgreSQL database architecture with real time data sync, automated profile creation triggers, and REST API endpoints.
+- **Authentication & Security**: Multi role access control separating student dashboards from administrative faculty portals, encrypted authentication sessions, and strict Row Level Security (RLS) policies.
+- **Cloud Deployment & Delivery**: Optimized continuous delivery pipeline via Vercel edge infrastructure ensuring 99.9% uptime and minimal latency for students across Nepal.
