@@ -33,24 +33,9 @@ export default function AdminLayout() {
       {/* Sidebar */}
       <aside className="admin-sidebar">
         <div className="admin-sidebar__header">
-          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-            <div style={{
-              width: 34,
-              height: 34,
-              borderRadius: 'var(--radius-lg)',
-              background: 'var(--green-900)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2">
-                <path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8Z" />
-              </svg>
-            </div>
-            <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: '17px' }}>
-              Seed<span style={{ color: 'var(--green-600)' }}>Society</span>
-            </span>
-          </div>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+            <img src="/logo-green.png" alt="Seed Society" style={{ height: '34px', width: 'auto' }} />
+          </Link>
           <span className="admin-badge">Admin</span>
         </div>
 

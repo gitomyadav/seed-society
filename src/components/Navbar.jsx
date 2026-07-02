@@ -51,12 +51,7 @@ export default function Navbar() {
       <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
         <div className="navbar__inner">
           <Link to="/" className="navbar__logo">
-            <div className="navbar__logo-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8Z" />
-              </svg>
-            </div>
-            <span className="navbar__logo-text">Seed<span>Society</span></span>
+            <img src="/logo-green.png" alt="Seed Society" style={{ height: '38px', width: 'auto' }} />
           </Link>
 
           <div className="navbar__links">
