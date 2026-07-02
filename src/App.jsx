@@ -121,7 +121,7 @@ function AppRoutes() {
       <Route
         path="/login"
         element={
-          <PublicLayout showFooter={false}>
+          <PublicLayout showNavbar={false} showFooter={false}>
             <Login />
           </PublicLayout>
         }
@@ -129,7 +129,7 @@ function AppRoutes() {
       <Route
         path="/register"
         element={
-          <PublicLayout showFooter={false}>
+          <PublicLayout showNavbar={false} showFooter={false}>
             <Register />
           </PublicLayout>
         }
@@ -137,7 +137,7 @@ function AppRoutes() {
       <Route
         path="/pending"
         element={
-          <PublicLayout showFooter={false}>
+          <PublicLayout showNavbar={false} showFooter={false}>
             <PendingApproval />
           </PublicLayout>
         }
