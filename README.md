@@ -1,6 +1,6 @@
 # Seed Society Nepal Interactive Learning Platform
 
-Seed Society is an active online educational portal currently used by over 500+ high school students in our local community—built primarily to empower underprivileged learners preparing for competitive national entrance examinations including CEE Medical and IOE Engineering, alongside NEB Grade 11 and Grade 12 board studies.
+Seed Society is an active online educational portal currently used by over 500+ high school students in our local community, built primarily to empower underprivileged learners preparing for competitive national entrance examinations including CEE Medical and IOE Engineering, alongside NEB Grade 11 and Grade 12 board studies.
 
 A core focus of this project is driving real community impact by democratizing access to education. In our region, verified study materials and structured exam preparation are often locked behind expensive coaching center fees that many families cannot afford. This portal breaks down those financial barriers by providing a centralized, free interactive hub focused on underprivileged students, while remaining an open and structured digital space where any student in the community can learn and grow.
 
