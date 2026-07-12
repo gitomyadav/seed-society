@@ -391,7 +391,7 @@ export default function AdminStudents() {
                 <h4 style={{ fontSize: '14px', fontWeight: 600, marginBottom: '14px', color: 'var(--text-primary)' }}>
                   Profile Information
                 </h4>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+                <div className="admin-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
                   <div>
                     <label style={{ fontSize: '12px', color: 'var(--text-secondary)', display: 'block', marginBottom: 6 }}>Full Name</label>
                     <input

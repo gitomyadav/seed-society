@@ -17,7 +17,7 @@ export default function StudentNotices() {
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
         {notices.map((not) => (
-          <div key={not.id} style={{
+          <div key={not.id} className="student-notice-card" style={{
             background: 'var(--bg-primary)',
             border: '1px solid var(--border-light)',
             borderRadius: 'var(--radius-2xl)',
@@ -27,7 +27,7 @@ export default function StudentNotices() {
             alignItems: 'flex-start',
             boxShadow: 'var(--shadow-xs)',
           }}>
-            <div style={{
+            <div className="student-notice-card__icon" style={{
               width: 48,
               height: 48,
               borderRadius: 'var(--radius-xl)',

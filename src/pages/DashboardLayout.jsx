@@ -78,7 +78,7 @@ export default function DashboardLayout() {
         <div className="sidebar__footer" style={{ position: 'relative' }}>
           {/* Popup Menu */}
           {profileMenuOpen && (
-            <div style={{
+            <div className="sidebar__profile-popup" style={{
               position: 'absolute',
               bottom: '100%',
               left: '12px',

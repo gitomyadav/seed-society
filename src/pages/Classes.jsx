@@ -110,7 +110,7 @@ export default function Classes() {
                 }}
               >
                 {/* Color Indicator */}
-                <div style={{
+                <div className="class-list-item__indicator" style={{
                   width: 4,
                   height: 44,
                   borderRadius: 2,
@@ -119,10 +119,12 @@ export default function Classes() {
                 }} />
 
                 {/* Subject Icon */}
-                <SubjectIcon subject={cls.subject} size={18} />
+                <div className="class-list-item__icon" style={{ display: 'flex', alignItems: 'center' }}>
+                  <SubjectIcon subject={cls.subject} size={18} />
+                </div>
 
                 {/* Time */}
-                <div style={{ minWidth: 80 }}>
+                <div className="class-list-item__time" style={{ minWidth: 80 }}>
                   <div style={{
                     fontFamily: 'var(--font-heading)',
                     fontWeight: 700,
@@ -140,8 +142,8 @@ export default function Classes() {
                 </div>
 
                 {/* Details */}
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{
+                <div className="class-list-item__details" style={{ flex: 1, minWidth: 0 }}>
+                  <div className="class-list-item__title" style={{
                     fontWeight: 600,
                     fontSize: 'var(--text-sm)',
                     color: 'var(--text-primary)',
@@ -149,12 +151,9 @@ export default function Classes() {
                   }}>
                     {cls.subject}
                   </div>
-                  <div style={{
+                  <div className="class-list-item__topic" style={{
                     fontSize: 'var(--text-xs)',
                     color: 'var(--text-tertiary)',
-                    whiteSpace: 'nowrap',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
                   }}>
                     {cls.topic}
                   </div>
@@ -170,7 +169,7 @@ export default function Classes() {
                 </div>
 
                 {/* Status & Action */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', flexShrink: 0 }}>
+                <div className="class-list-item__actions" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', flexShrink: 0 }}>
                   <span style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -227,6 +226,7 @@ export default function Classes() {
       {/* Class Detail Modal */}
       {selectedClass && (
         <div
+          className="class-detail-modal-backdrop"
           style={{
             position: 'fixed',
             inset: 0,
@@ -248,6 +248,7 @@ export default function Classes() {
 
           {/* Modal */}
           <div
+            className="class-detail-modal"
             style={{
               position: 'relative',
               background: 'var(--bg-primary)',
@@ -255,7 +256,8 @@ export default function Classes() {
               maxWidth: 440,
               width: '100%',
               padding: 0,
-              overflow: 'hidden',
+              overflow: 'auto',
+              maxHeight: '90vh',
               boxShadow: '0 24px 64px rgba(0, 0, 0, 0.12)',
               animation: 'fadeIn 0.2s ease',
             }}
@@ -313,7 +315,7 @@ export default function Classes() {
             </div>
 
             {/* Class Info */}
-            <div style={{
+            <div className="class-detail-modal__grid" style={{
               padding: '0 var(--space-6)',
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',

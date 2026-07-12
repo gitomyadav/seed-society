@@ -980,38 +980,322 @@
 
   .dashboard__main {
     margin-left: 0;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
   }
 
   .dashboard__content {
-    padding: var(--space-4);
+    padding: 16px !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
   }
 
   .topbar {
-    padding: 0 var(--space-4);
+    padding: 0 16px;
+    height: 56px;
+  }
+
+  .topbar__title {
+    font-size: 16px;
   }
 
   .topbar__search {
     display: none;
   }
 
+  .overview__greeting h1 {
+    font-size: 22px;
+  }
+
+  .overview__greeting p {
+    font-size: 14px;
+  }
+
+  .overview__greeting {
+    margin-bottom: 20px;
+  }
+
   .overview__cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
   }
 
+  .overview-card {
+    padding: 16px;
+  }
+
+  .overview-card__icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .overview-card__value {
+    font-size: 24px;
+  }
+
+  .overview-card__trend {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .dashboard__two-col {
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .panel__header {
+    padding: 14px 16px;
+  }
+
+  .panel__body {
+    padding: 12px 16px;
+  }
+
+  .panel__title {
+    font-size: 14px;
+  }
+
+  /* Class items in panels (Overview page) */
+  .class-item {
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    padding: 12px 0 !important;
+  }
+
+  .class-item__time {
+    min-width: 56px !important;
+  }
+
+  .class-item__time-value {
+    font-size: 12px;
+  }
+
+  .class-item__info {
+    flex: 1 1 calc(100% - 80px) !important;
+    min-width: 0 !important;
+    word-break: break-word !important;
+  }
+
+  .class-item__badge {
+    font-size: 10px;
+    padding: 3px 8px;
+    margin-left: auto;
+  }
+
+  /* Class list item (Student Classes Page) */
+  .class-list-item {
+    flex-wrap: wrap !important;
+    padding: 16px !important;
+    gap: 12px !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .class-list-item__indicator {
+    height: 100% !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    border-radius: 20px 0 0 20px !important;
+  }
+
+  .class-list-item__icon {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: var(--neutral-50);
+    border-radius: var(--radius-md);
+    margin-left: 6px;
+  }
+
+  .class-list-item__time {
+    min-width: unset !important;
+    flex: 1 !important;
+  }
+
+  .class-list-item__details {
+    width: 100% !important;
+    flex: 1 1 100% !important;
+    order: 4;
+    padding-left: 6px;
+    margin-top: 4px;
+    border-top: 1px dashed var(--border-light);
+    padding-top: 10px;
+  }
+
+  .class-list-item__title {
+    font-size: 14px !important;
+    word-break: break-word !important;
+  }
+
+  .class-list-item__topic {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    line-height: 1.4 !important;
+    word-break: break-word !important;
+  }
+
+  .class-list-item__actions {
+    order: 5;
+    width: 100% !important;
+    justify-content: space-between !important;
+    margin-top: 4px !important;
+  }
+
+  /* Schedule cards */
+  .schedule-class-card {
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    padding: 14px 16px !important;
+  }
+
+  .schedule-class-card__time {
+    min-width: unset !important;
+    font-size: 13px;
+  }
+
+  .schedule-class-card__subject {
+    font-size: 14px;
+    word-break: break-word !important;
+  }
+
+  .schedule-class-card__teacher {
+    margin-left: 0 !important;
+    width: 100% !important;
+    font-size: 12px;
+    padding-left: 14px !important;
+    border-left: none !important;
+  }
+
+  .schedule__day-title {
+    font-size: 14px;
+  }
+
+  /* Subject progress rows */
+  .subject-progress {
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+
+  /* Materials grid */
   .materials__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
   }
 
+  .material-card {
+    padding: 16px !important;
+  }
+
+  /* Progress page */
   .progress-page__stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
   .progress__subjects {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
   .materials-page__filters {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  /* Student courses grid override */
+  .student-courses__grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Student page headers */
+  .student-page__header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+  }
+
+  .student-page__header input {
+    width: 100% !important;
+  }
+
+  /* Notice cards */
+  .student-notice-card {
+    flex-direction: column !important;
+    gap: 14px !important;
+    padding: 16px !important;
+  }
+
+  .student-notice-card__icon {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  /* Profile form grid */
+  .profile-form__grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  /* Class detail modal */
+  .class-detail-modal-backdrop {
+    padding: 14px !important;
+    align-items: flex-end !important;
+  }
+
+  .class-detail-modal {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 85vh !important;
+    border-radius: 24px 24px 0 0 !important;
+    margin: 0 !important;
+  }
+
+  .class-detail-modal__body {
+    padding: 16px !important;
+  }
+
+  .class-detail-modal__grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .class-detail-modal__actions {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .class-detail-modal__actions button {
+    width: 100% !important;
+    justify-content: center !important;
   }
 }
+
+@media (max-width: 480px) {
+  .overview__cards {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .overview-card__value {
+    font-size: 20px;
+  }
+
+  .overview-card__label {
+    font-size: 12px;
+  }
+
+  .topbar__title {
+    font-size: 15px;
+  }
+
+  .dashboard__content {
+    padding: 12px !important;
+  }
+}
+
