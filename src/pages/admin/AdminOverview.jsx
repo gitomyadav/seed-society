@@ -72,7 +72,7 @@ export default function AdminOverview() {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 'var(--space-6)', marginTop: 'var(--space-6)' }}>
+      <div className="admin-overview__grid">
         {/* Recent Classes Table */}
         <div className="admin-card">
           <div className="admin-card__header">
