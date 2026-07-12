@@ -3,10 +3,11 @@ import { useData } from '../../context/DataContext';
 import { SubjectIcon, IconPlus, IconTrash, IconX } from '../../components/Icons';
 
 export default function AdminClasses() {
-  const { classes = [], addClass, deleteClass, updateClass } = useData();
+  const { classes = [], courses = [], addClass, deleteClass, updateClass } = useData();
   const [showModal, setShowModal] = useState(false);
 
   // Clean Form State without fluff
+  const [selectedCourseId, setSelectedCourseId] = useState('');
   const [subject, setSubject] = useState('');
   const [topic, setTopic] = useState('');
   const [teacher, setTeacher] = useState('');
@@ -18,17 +19,22 @@ export default function AdminClasses() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!subject || !meetingId || !password) return;
+    if (!meetingId || !password) return;
+
+    const courseObj = courses.find(c => c.id === selectedCourseId);
+    const finalSubject = subject || (courseObj ? courseObj.subject || courseObj.title : 'General Preparation');
 
     await addClass({
-      subject,
-      topic: topic || subject,
+      subject: finalSubject,
+      topic: topic || finalSubject,
       teacher: teacher || 'Seed Society Faculty',
       date: date || 'Today',
       time: time || '06:00 AM',
       meetingId,
       password,
       joinUrl,
+      course_id: selectedCourseId || null,
+      courseId: selectedCourseId || null,
       zoom: {
         meetingId,
         password,
@@ -37,6 +43,7 @@ export default function AdminClasses() {
       status: 'scheduled',
     });
 
+    setSelectedCourseId('');
     setSubject('');
     setTopic('');
     setTeacher('');
@@ -91,7 +98,9 @@ export default function AdminClasses() {
               </tr>
             </thead>
             <tbody>
-              {classes.map((cls) => (
+              {classes.map((cls) => {
+                const targetCourse = courses.find(c => c.id === (cls.course_id || cls.courseId));
+                return (
                 <tr key={cls.id}>
                   <td>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
@@ -99,6 +108,15 @@ export default function AdminClasses() {
                       <div>
                         <div style={{ fontWeight: 700, color: 'var(--text-primary)' }}>{cls.subject}</div>
                         <div style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>{cls.topic}</div>
+                        {targetCourse ? (
+                          <span style={{ fontSize: '11px', background: 'var(--green-50)', color: 'var(--green-700)', padding: '2px 8px', borderRadius: 12, fontWeight: 600, display: 'inline-block', marginTop: 4 }}>
+                            Course: {targetCourse.title}
+                          </span>
+                        ) : (
+                          <span style={{ fontSize: '11px', background: 'var(--neutral-100)', color: 'var(--text-tertiary)', padding: '2px 8px', borderRadius: 12, fontWeight: 600, display: 'inline-block', marginTop: 4 }}>
+                            Open to All Students
+                          </span>
+                        )}
                       </div>
                     </div>
                   </td>
@@ -109,7 +127,7 @@ export default function AdminClasses() {
                   </td>
                   <td>
                     <div style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 600 }}>
-                      ID: {cls.zoom?.meetingId || cls.meetingId || 'N/A'}
+                      ID: {cls.zoom?.meetingId || cls.meeting_id || cls.meetingId || 'N/A'}
                     </div>
                     <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--text-tertiary)' }}>
                       Pass: {cls.zoom?.password || cls.password || 'N/A'}
@@ -135,7 +153,8 @@ export default function AdminClasses() {
                     </button>
                   </td>
                 </tr>
-              ))}
+              );
+            })}
             </tbody>
           </table>
         )}
@@ -153,16 +172,37 @@ export default function AdminClasses() {
 
             <form onSubmit={handleSubmit}>
               <div className="admin-modal__body" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+                <div className="input-group">
+                  <label style={{ color: 'var(--green-700)', fontWeight: 700 }}>Select Target Course (Enrollment Required)</label>
+                  <select
+                    className="input"
+                    value={selectedCourseId}
+                    onChange={(e) => {
+                      setSelectedCourseId(e.target.value);
+                      const c = courses.find(x => x.id === e.target.value);
+                      if (c && !subject) setSubject(c.subject || c.title);
+                    }}
+                    style={{ fontWeight: 600, border: '1.5px solid var(--green-300)', background: 'var(--green-25)' }}
+                  >
+                    <option value="">Open to All Students (General)</option>
+                    {courses.map(c => (
+                      <option key={c.id} value={c.id}>{c.title} ({c.subject || 'Prep'})</option>
+                    ))}
+                  </select>
+                  <span style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginTop: 4 }}>
+                    Only students enrolled in this selected course will see this Zoom class.
+                  </span>
+                </div>
+
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
                   <div className="input-group">
-                    <label>Subject / Course Name</label>
+                    <label>Subject / Course Title</label>
                     <input
                       type="text"
                       className="input"
-                      placeholder="Write subject (e.g. CEE Physics)"
+                      placeholder="Write subject (e.g. Physics)"
                       value={subject}
                       onChange={(e) => setSubject(e.target.value)}
-                      required
                     />
                   </div>
 

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useData } from '../context/DataContext';
 import { IconBook, IconCheckCircle, IconClock, IconTrendingUp, IconVideo } from '../components/Icons';
@@ -6,7 +7,26 @@ import { Link } from 'react-router-dom';
 
 export default function DashboardOverview() {
   const { user } = useAuth();
-  const { classes: upcomingClasses = [], courses = [], materials = [] } = useData();
+  const { classes: upcomingClasses = [], courses = [], materials = [], getStudentEnrollments } = useData();
+  const [enrolledCourseIds, setEnrolledCourseIds] = useState(new Set());
+
+  useEffect(() => {
+    let mounted = true;
+    async function fetchMyEnrollments() {
+      if (user?.id) {
+        const ids = await getStudentEnrollments(user.id);
+        if (mounted) setEnrolledCourseIds(new Set(ids));
+      }
+    }
+    fetchMyEnrollments();
+    return () => { mounted = false; };
+  }, [user?.id, getStudentEnrollments]);
+
+  const filteredClasses = upcomingClasses.filter(cls => {
+    const cid = cls.course_id || cls.courseId;
+    if (!cid) return true;
+    return enrolledCourseIds.has(cid);
+  });
 
   const overviewCards = [
     {
@@ -22,7 +42,7 @@ export default function DashboardOverview() {
       bg: '#ECFDF5',
       color: '#059669',
       label: 'Live / Scheduled Classes',
-      value: upcomingClasses.length || 4,
+      value: filteredClasses.length || 4,
       trend: 'Zoom Live Tuition',
     },
     {
@@ -88,7 +108,7 @@ export default function DashboardOverview() {
             <Link to="/dashboard/classes" className="panel__action">View all</Link>
           </div>
           <div className="panel__body">
-            {upcomingClasses.slice(0, 3).map((cls) => (
+            {filteredClasses.slice(0, 3).map((cls) => (
               <div key={cls.id} className="class-item">
                 <div className="class-item__time">
                   <div className="class-item__time-value">{cls.time}</div>
