@@ -84,8 +84,8 @@ export default function Footer() {
             © 2026 <a href="https://seedsocietynepal.com">Seed Society</a>. All rights reserved. Built in Janakpur, Nepal.
           </p>
           <div className="footer__bottom-links">
-            <a href="#" className="footer__bottom-link">Privacy Policy</a>
-            <a href="#" className="footer__bottom-link">Terms of Service</a>
+            <Link to="/privacy" className="footer__bottom-link">Privacy Policy</Link>
+            <Link to="/terms" className="footer__bottom-link">Terms of Service</Link>
           </div>
         </div>
       </div>
