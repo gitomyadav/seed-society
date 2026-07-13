@@ -105,6 +105,11 @@ export default function Register() {
 
       <div className="auth__form-side">
         <div className="auth__form-container">
+          <div style={{ marginBottom: 'var(--space-4)' }}>
+            <Link to="/" style={{ color: 'var(--green-600)', fontWeight: 600, fontSize: '13px', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              ← Back to Home
+            </Link>
+          </div>
           <div className="auth__form-header">
             <h1 className="auth__form-title">Create your account</h1>
             <p className="auth__form-subtitle">
