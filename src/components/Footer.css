@@ -19,7 +19,7 @@
 
 .footer__grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  grid-template-columns: 1.8fr 1fr 1.3fr;
   gap: var(--space-12);
   margin-bottom: var(--space-16);
 }
@@ -166,7 +166,21 @@
 }
 
 @media (max-width: 480px) {
+  .footer {
+    padding: var(--space-12) 0 var(--space-6);
+  }
+
   .footer__grid {
     grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .footer__link {
+    padding: 6px 0;
+  }
+
+  .footer__bottom-links {
+    flex-direction: column;
+    gap: 12px;
   }
 }

@@ -36,7 +36,7 @@ export default function Materials() {
   return (
     <>
       {/* Search Bar */}
-      <div style={{ marginBottom: 'var(--space-6)', maxWidth: '420px' }}>
+      <div className="student-page__header" style={{ marginBottom: 'var(--space-6)', maxWidth: '420px', width: '100%' }}>
         <input
           type="text"
           className="input"
@@ -59,7 +59,7 @@ export default function Materials() {
           return (
             <div key={material.id} className="material-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
+                <div className="material-card__header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px', flexWrap: 'wrap', gap: '8px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <div style={{
                       width: '38px',

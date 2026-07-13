@@ -78,7 +78,7 @@ export default function StudentProfile() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 'var(--space-8)' }}>
+      <div className="profile-form__grid" style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 'var(--space-8)' }}>
         {/* Profile Summary Card */}
         <div style={{
           background: 'var(--bg-primary)',
@@ -172,7 +172,7 @@ export default function StudentProfile() {
             )}
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
+              <div className="profile-form__grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
                 <div className="input-group">
                   <label>Full Student Name</label>
                   <input type="text" className="input" value={name} onChange={(e) => setName(e.target.value)} required />
@@ -183,7 +183,7 @@ export default function StudentProfile() {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
+              <div className="profile-form__grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
                 <div className="input-group">
                   <label>Target Exam / Course</label>
                   <select className="input" value={grade} onChange={(e) => setGrade(e.target.value)} style={{ padding: '10px' }}>
@@ -203,7 +203,7 @@ export default function StudentProfile() {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
+              <div className="profile-form__grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
                 <div className="input-group">
                   <label>WhatsApp Contact Number</label>
                   <input type="text" className="input" value={phone} onChange={(e) => setPhone(e.target.value)} />

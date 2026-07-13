@@ -441,10 +441,31 @@
     gap: 12px;
   }
 
+  .admin-main {
+    margin-left: 0;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  .admin-content {
+    padding: 16px !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
   .admin-card__header > div,
   .admin-card__header > button {
     width: 100%;
     justify-content: center;
+  }
+
+  .admin-card:has(.admin-table),
+  .admin-card {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
   }
 
   .admin-table {
