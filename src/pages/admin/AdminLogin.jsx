@@ -53,44 +53,15 @@ export default function AdminLogin() {
             <img src="/logo-white.png" alt="Seed Society" style={{ height: '44px', width: 'auto' }} />
           </Link>
         </div>
-        {/* Header Badge */}
-        <div style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: 8,
-          background: 'rgba(16, 185, 129, 0.15)',
-          border: '1px solid rgba(16, 185, 129, 0.3)',
-          color: '#34D399',
-          padding: '6px 14px',
-          borderRadius: '999px',
-          fontSize: '12px',
-          fontWeight: 700,
-          letterSpacing: '0.5px',
-          textTransform: 'uppercase',
-          marginBottom: '24px',
-        }}>
-          <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#34D399', boxShadow: '0 0 10px #34D399' }} />
-          Secure Admin Portal
-        </div>
-
         <h1 style={{
-          fontSize: '28px',
-          fontWeight: 800,
-          marginBottom: '8px',
+          fontSize: '26px',
+          fontWeight: 700,
+          marginBottom: '24px',
           color: '#fff',
           letterSpacing: '-0.5px',
         }}>
-          Administrator Sign In
+          Admin Sign In
         </h1>
-
-        <p style={{
-          color: '#9CA3AF',
-          fontSize: '14px',
-          marginBottom: '32px',
-          lineHeight: 1.5,
-        }}>
-          Manage Seed Society classes, CEE/IOE students, tuition schedules, study materials, and system configurations.
-        </p>
 
         {error && (
           <div style={{
@@ -116,14 +87,14 @@ export default function AdminLogin() {
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div>
             <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#D1D5DB', marginBottom: '8px' }}>
-              Admin Email Address
+              Email Address
             </label>
             <input
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="admin@seedsocietynepal.com"
+              placeholder="Enter your email address"
               style={{
                 width: '100%',
                 padding: '12px 16px',
@@ -142,7 +113,7 @@ export default function AdminLogin() {
 
           <div>
             <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#D1D5DB', marginBottom: '8px' }}>
-              Master Password
+              Password
             </label>
             <div style={{ position: 'relative' }}>
               <input
@@ -150,7 +121,7 @@ export default function AdminLogin() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter admin master password"
+                placeholder="Enter your password"
                 style={{
                   width: '100%',
                   padding: '12px 44px 12px 16px',
@@ -204,7 +175,7 @@ export default function AdminLogin() {
               marginTop: '8px',
             }}
           >
-            {loading ? 'Authenticating Admin Access...' : 'Access Admin Dashboard →'}
+            {loading ? 'Signing in...' : 'Sign In →'}
           </button>
         </form>
 

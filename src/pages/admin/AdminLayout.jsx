@@ -1,4 +1,5 @@
-import { Outlet, NavLink, useNavigate, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Outlet, NavLink, useNavigate, Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import {
   IconHome,
@@ -9,34 +10,48 @@ import {
   IconBell,
   IconStar,
   IconLogOut,
-  IconExternalLink,
   IconCalendar,
 } from '../../components/Icons';
 import './Admin.css';
 
 export default function AdminLayout() {
-  const { user, logout, switchRole } = useAuth();
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  useEffect(() => {
+    setMobileNavOpen(false);
+  }, [location.pathname]);
 
   const handleLogout = () => {
     logout();
     navigate('/');
   };
 
-  const handleSwitchToStudent = () => {
-    switchRole('student');
-    navigate('/dashboard');
-  };
-
   return (
     <div className="admin-layout">
+      {/* Mobile Backdrop */}
+      {mobileNavOpen && (
+        <div className="admin-sidebar-backdrop" onClick={() => setMobileNavOpen(false)} />
+      )}
+
       {/* Sidebar */}
-      <aside className="admin-sidebar">
+      <aside className={`admin-sidebar ${mobileNavOpen ? 'admin-sidebar--open' : ''}`}>
         <div className="admin-sidebar__header">
           <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
             <img src="/logo-green.png" alt="Seed Society" style={{ height: '34px', width: 'auto' }} />
           </Link>
-          <span className="admin-badge">Admin</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span className="admin-badge">Admin</span>
+            <button
+              className="admin-sidebar__close-btn"
+              onClick={() => setMobileNavOpen(false)}
+              aria-label="Close menu"
+            >
+              ✕
+            </button>
+          </div>
         </div>
 
         <nav className="admin-nav" style={{ overflowY: 'auto' }}>
@@ -50,7 +65,6 @@ export default function AdminLayout() {
             <IconHome size={18} />
             Overview
           </NavLink>
-
           <NavLink
             to="/admin/classes"
             className={({ isActive }) =>
@@ -60,7 +74,6 @@ export default function AdminLayout() {
             <IconVideo size={18} />
             Classes & Zoom
           </NavLink>
-
           <NavLink
             to="/admin/schedule"
             className={({ isActive }) =>
@@ -70,7 +83,6 @@ export default function AdminLayout() {
             <IconCalendar size={18} />
             Schedule Manager
           </NavLink>
-
           <NavLink
             to="/admin/materials"
             className={({ isActive }) =>
@@ -80,7 +92,6 @@ export default function AdminLayout() {
             <IconFileText size={18} />
             Study Materials
           </NavLink>
-
           <NavLink
             to="/admin/teachers"
             className={({ isActive }) =>
@@ -90,7 +101,6 @@ export default function AdminLayout() {
             <IconStar size={18} />
             Teachers & Faculty
           </NavLink>
-
           <NavLink
             to="/admin/courses"
             className={({ isActive }) =>
@@ -100,7 +110,6 @@ export default function AdminLayout() {
             <IconBook size={18} />
             Tuition Courses
           </NavLink>
-
           <NavLink
             to="/admin/notices"
             className={({ isActive }) =>
@@ -110,7 +119,6 @@ export default function AdminLayout() {
             <IconBell size={18} />
             Notice Board
           </NavLink>
-
           <NavLink
             to="/admin/students"
             className={({ isActive }) =>
@@ -123,28 +131,6 @@ export default function AdminLayout() {
         </nav>
 
         <div style={{ padding: 'var(--space-4)', borderTop: '1px solid var(--border-light)' }}>
-          <button
-            onClick={handleSwitchToStudent}
-            style={{
-              width: '100%',
-              padding: '10px 14px',
-              borderRadius: 'var(--radius-md)',
-              background: 'var(--green-50)',
-              color: 'var(--green-700)',
-              fontFamily: 'var(--font-heading)',
-              fontWeight: 600,
-              fontSize: 'var(--text-xs)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '6px',
-              marginBottom: '8px',
-            }}
-          >
-            <IconExternalLink size={15} />
-            Switch to Student View
-          </button>
-
           <button
             onClick={handleLogout}
             style={{
@@ -169,17 +155,28 @@ export default function AdminLayout() {
       {/* Main Area */}
       <main className="admin-main">
         <header className="admin-topbar">
-          <div>
-            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'var(--text-lg)', fontWeight: 700 }}>
-              Teacher & Administrator Portal
-            </h2>
-            <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-tertiary)' }}>
-              Managing CEE, IOE Entrance Prep & NEB Tuition — Nepal
-            </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <button
+              className="admin-topbar__toggle"
+              onClick={() => setMobileNavOpen(true)}
+              aria-label="Open menu"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <div>
+              <h2 className="admin-topbar__title">
+                Teacher & Administrator Portal
+              </h2>
+              <span className="admin-topbar__subtitle">
+                Managing CEE, IOE Entrance Prep & NEB Tuition — Nepal
+              </span>
+            </div>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
-            <div style={{ textAlign: 'right' }}>
+            <div className="admin-topbar__user-info">
               <div style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--text-primary)' }}>
                 {user?.name || 'Ram Prasad Sharma'}
               </div>
@@ -199,6 +196,7 @@ export default function AdminLayout() {
               fontFamily: 'var(--font-heading)',
               fontWeight: 700,
               fontSize: 'var(--text-sm)',
+              flexShrink: 0
             }}>
               {user?.avatar || 'RS'}
             </div>
