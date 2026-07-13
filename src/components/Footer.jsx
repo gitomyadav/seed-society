@@ -7,14 +7,9 @@ export default function Footer() {
       <div className="container">
         <div className="footer__grid">
           <div className="footer__brand">
-            <div className="footer__logo">
-              <div className="footer__logo-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8Z" />
-                </svg>
-              </div>
-              <span className="footer__logo-text">Seed<span>Society</span></span>
-            </div>
+            <Link to="/" className="footer__logo" style={{ textDecoration: 'none' }}>
+              <img src="/logo-white.png" alt="Seed Society" style={{ height: '42px', width: 'auto' }} />
+            </Link>
             <p className="footer__description">
               Empowering CEE & IOE engineering/medical aspirants and NEB Grade 11 & 12 students across Nepal with structured, high-quality education.
             </p>

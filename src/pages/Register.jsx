@@ -67,14 +67,9 @@ export default function Register() {
     <div className="auth-page">
       <div className="auth__visual">
         <div className="auth__visual-content">
-          <div className="auth__visual-logo">
-            <div className="auth__visual-logo-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8Z" />
-              </svg>
-            </div>
-            <span className="auth__visual-logo-text">Seed<span>Society</span></span>
-          </div>
+          <Link to="/" className="auth__visual-logo" style={{ textDecoration: 'none' }}>
+            <img src="/logo-white.png" alt="Seed Society" style={{ height: '44px', width: 'auto' }} />
+          </Link>
 
           <div className="auth__visual-illustration">
             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
@@ -111,6 +106,9 @@ export default function Register() {
             </Link>
           </div>
           <div className="auth__form-header">
+            <Link to="/" style={{ textDecoration: 'none', display: 'block', marginBottom: '16px' }}>
+              <img src="/logo-green.png" alt="Seed Society" style={{ height: '36px', width: 'auto' }} />
+            </Link>
             <h1 className="auth__form-title">Create your account</h1>
             <p className="auth__form-subtitle">
               Already have an account? <Link to="/login">Sign in</Link>

@@ -52,13 +52,8 @@ export default function DashboardLayout() {
       {/* Sidebar */}
       <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div className="sidebar__header">
-          <Link to="/" className="sidebar__logo">
-            <div className="sidebar__logo-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8Z" />
-              </svg>
-            </div>
-            <span className="sidebar__logo-text">Seed<span>Society</span></span>
+          <Link to="/" className="sidebar__logo" style={{ textDecoration: 'none' }}>
+            <img src="/logo-green.png" alt="Seed Society" style={{ height: '34px', width: 'auto' }} />
           </Link>
         </div>
 

@@ -48,6 +48,11 @@ export default function AdminLogin() {
         boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 40px rgba(16, 185, 129, 0.1)',
         backdropFilter: 'blur(16px)',
       }}>
+        <div style={{ marginBottom: '24px' }}>
+          <Link to="/">
+            <img src="/logo-white.png" alt="Seed Society" style={{ height: '44px', width: 'auto' }} />
+          </Link>
+        </div>
         {/* Header Badge */}
         <div style={{
           display: 'inline-flex',
