@@ -37,39 +37,86 @@ export default function Landing() {
           <div className="hero__bg-line hero__bg-line--3" />
         </div>
 
-        <div className="hero__content">
-          <div className="hero__eyebrow">
-            <span className="hero__eyebrow-line" />
-            Premier Entrance & Academic Portal
-          </div>
+        <div className="hero__container">
+          <div className="hero__grid">
+            <div className="hero__content">
+              <div className="hero__eyebrow">
+                <span className="hero__eyebrow-line" />
+                CEE Medical & IOE Engineering Hub
+              </div>
 
-          <h1 className="hero__title">
-            Master CEE Medical & IOE<br />
-            Engineering Entrance Exams
-          </h1>
+              <h1 className="hero__title">
+                Master competitive entrance<br />
+                exams with <em>precision</em>
+              </h1>
 
-          <p className="hero__subtitle">
-            An advanced digital learning hub providing structured entrance test preparation, rigorous question banks, and comprehensive Grade 11 & 12 science tuition support.
-          </p>
+              <p className="hero__subtitle">
+                Nepal's premier learning portal providing rigorous entrance test modules, high-yield question banks, and complete Grade 11 & 12 science tuition support.
+              </p>
 
-          <div className="hero__actions">
-            <Link to="/register" className="btn btn--primary btn--lg">
-              Get Started
-              <IconArrowRight size={15} />
-            </Link>
-            <Link to="/login" className="btn btn--outline btn--lg">
-              Student Login
-            </Link>
-          </div>
+              <div className="hero__actions">
+                <Link to="/register" className="btn btn--primary btn--lg">
+                  Explore Study Modules
+                  <IconArrowRight size={15} />
+                </Link>
+                <Link to="/login" className="btn btn--outline btn--lg">
+                  Student Portal
+                </Link>
+              </div>
 
-          <div className="hero__note">
-            <span>
-              500+ Active Students
-              <span className="hero__note-divider" />
-              Primary CEE & IOE Focus
-              <span className="hero__note-divider" />
-              Grade 11 & 12 Tuition Support
-            </span>
+              <div className="hero__note">
+                <span>
+                  500+ Enrolled Aspirants
+                  <span className="hero__note-divider" />
+                  Primary CEE & IOE Focus
+                  <span className="hero__note-divider" />
+                  Grade 11 & 12 Tuition
+                </span>
+              </div>
+            </div>
+
+            <div className="hero__mockup">
+              <div className="hero__mockup-header">
+                <div className="hero__mockup-dots">
+                  <span className="hero__mockup-dot hero__mockup-dot--red" />
+                  <span className="hero__mockup-dot hero__mockup-dot--yellow" />
+                  <span className="hero__mockup-dot hero__mockup-dot--green" />
+                </div>
+                <span className="hero__mockup-badge">Live System v2.6</span>
+              </div>
+
+              <div className="hero__mockup-body">
+                <div className="hero__mockup-card">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                    <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-primary)' }}>CEE Medical Prep Track</span>
+                    <span style={{ fontSize: 11, background: 'var(--green-100)', color: 'var(--green-700)', padding: '2px 8px', borderRadius: 12, fontWeight: 600 }}>Active</span>
+                  </div>
+                  <div style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 12 }}>
+                    Zoology & Botany High-Yield Drills · 1,450 MCQs Solved
+                  </div>
+                  <div style={{ width: '100%', height: 6, background: 'var(--neutral-200)', borderRadius: 3, overflow: 'hidden' }}>
+                    <div style={{ width: '78%', height: '100%', background: 'var(--green-600)', borderRadius: 3 }} />
+                  </div>
+                </div>
+
+                <div className="hero__mockup-card">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                    <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-primary)' }}>IOE Engineering Prep Track</span>
+                    <span style={{ fontSize: 11, background: 'var(--neutral-200)', color: 'var(--text-secondary)', padding: '2px 8px', borderRadius: 12, fontWeight: 600 }}>Weekly Routine</span>
+                  </div>
+                  <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
+                    Engineering Math & Physics Numerical Sheets Synced
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 12px', background: 'var(--green-25)', border: '1px solid var(--green-200)', borderRadius: 10 }}>
+                  <div style={{ width: 8, height: 8, background: 'var(--green-600)', borderRadius: '50%' }} />
+                  <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--green-800)' }}>
+                    Grade 11 & 12 Science Tuition Support Included
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
