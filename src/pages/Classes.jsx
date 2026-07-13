@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useData } from '../context/DataContext';
+import { useAuth } from '../context/AuthContext';
 import { IconVideo, IconCopy, IconExternalLink, IconX } from '../components/Icons';
 import { SubjectIcon } from '../components/Icons';
 
@@ -14,9 +15,23 @@ const subjectColors = {
 };
 
 export default function Classes() {
-  const { classes: upcomingClasses } = useData();
+  const { classes: upcomingClasses = [], getStudentEnrollments } = useData();
+  const { user } = useAuth();
   const [selectedClass, setSelectedClass] = useState(null);
   const [copied, setCopied] = useState(null);
+  const [enrolledCourseIds, setEnrolledCourseIds] = useState(new Set());
+
+  useEffect(() => {
+    let mounted = true;
+    async function fetchMyEnrollments() {
+      if (user?.id) {
+        const ids = await getStudentEnrollments(user.id);
+        if (mounted) setEnrolledCourseIds(new Set(ids));
+      }
+    }
+    fetchMyEnrollments();
+    return () => { mounted = false; };
+  }, [user?.id, getStudentEnrollments]);
 
   const handleCopy = (text, field) => {
     navigator.clipboard.writeText(text).then(() => {
@@ -29,8 +44,15 @@ export default function Classes() {
     window.open(link || 'https://zoom.us', '_blank', 'noopener,noreferrer');
   };
 
+  // Filter classes so Zoom sessions tied to a course only appear to students enrolled in that course
+  const filteredClasses = upcomingClasses.filter(cls => {
+    const cid = cls.course_id || cls.courseId;
+    if (!cid) return true; // Open to all students
+    return enrolledCourseIds.has(cid);
+  });
+
   // Group classes by date
-  const groupedByDate = upcomingClasses.reduce((acc, cls) => {
+  const groupedByDate = filteredClasses.reduce((acc, cls) => {
     const dateLabel = cls.date?.includes('-') ? getDateLabel(cls.date) : (cls.date || 'Today');
     if (!acc[dateLabel]) acc[dateLabel] = [];
     acc[dateLabel].push(cls);
@@ -313,7 +335,7 @@ export default function Classes() {
               }}>
                 <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginBottom: 2 }}>Time</div>
                 <div style={{ fontWeight: 600, fontSize: 'var(--text-sm)' }}>
-                  {selectedClass.time} ({selectedClass.duration})
+                  {selectedClass.time}{selectedClass.duration ? ` (${selectedClass.duration})` : ''}
                 </div>
               </div>
               <div style={{
@@ -323,7 +345,7 @@ export default function Classes() {
                 gridColumn: 'span 2',
               }}>
                 <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginBottom: 2 }}>Teacher</div>
-                <div style={{ fontWeight: 600, fontSize: 'var(--text-sm)' }}>{selectedClass.teacher}</div>
+                <div style={{ fontWeight: 600, fontSize: 'var(--text-sm)' }}>{selectedClass.teacher || 'Seed Society Faculty'}</div>
               </div>
             </div>
 
@@ -364,11 +386,11 @@ export default function Classes() {
                       fontSize: 'var(--text-sm)',
                       letterSpacing: '0.05em',
                     }}>
-                      {selectedClass.zoom?.meetingId || selectedClass.meetingId || 'N/A'}
+                      {selectedClass.zoom?.meetingId || selectedClass.meeting_id || selectedClass.meetingId || 'N/A'}
                     </div>
                   </div>
                   <button
-                    onClick={() => handleCopy(selectedClass.zoom?.meetingId || selectedClass.meetingId, 'id')}
+                    onClick={() => handleCopy(selectedClass.zoom?.meetingId || selectedClass.meeting_id || selectedClass.meetingId, 'id')}
                     style={{
                       width: 32,
                       height: 32,
@@ -442,7 +464,7 @@ export default function Classes() {
                   fontSize: 'var(--text-sm)',
                   gap: 'var(--space-2)',
                 }}
-                onClick={() => handleJoinClass(selectedClass.zoom?.link || selectedClass.joinUrl)}
+                onClick={() => handleJoinClass(selectedClass.zoom?.link || selectedClass.join_url || selectedClass.joinUrl || `https://zoom.us/j/${(selectedClass.zoom?.meetingId || selectedClass.meeting_id || selectedClass.meetingId || '').replace(/\s+/g, '')}`)}
               >
                 <IconExternalLink size={15} />
                 Join class on Zoom
@@ -456,7 +478,9 @@ export default function Classes() {
 }
 
 function getDateLabel(dateStr) {
+  if (!dateStr) return 'Today';
   const date = new Date(dateStr);
+  if (isNaN(date.getTime())) return dateStr;
   const today = new Date();
   const tomorrow = new Date(today);
   tomorrow.setDate(tomorrow.getDate() + 1);
@@ -467,6 +491,8 @@ function getDateLabel(dateStr) {
 }
 
 function formatDate(dateStr) {
+  if (!dateStr) return 'Scheduled';
   const date = new Date(dateStr);
+  if (isNaN(date.getTime())) return dateStr;
   return date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 }

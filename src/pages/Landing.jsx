@@ -38,84 +38,39 @@ export default function Landing() {
         </div>
 
         <div className="hero__container">
-          <div className="hero__grid">
-            <div className="hero__content">
-              <div className="hero__eyebrow">
-                <span className="hero__eyebrow-line" />
-                CEE Medical & IOE Engineering Hub
-              </div>
-
-              <h1 className="hero__title">
-                Master competitive entrance<br />
-                exams with <em>precision</em>
-              </h1>
-
-              <p className="hero__subtitle">
-                Nepal's premier learning portal providing rigorous entrance test modules, high-yield question banks, and complete Grade 11 & 12 science tuition support.
-              </p>
-
-              <div className="hero__actions">
-                <Link to="/register" className="btn btn--primary btn--lg">
-                  Explore Study Modules
-                  <IconArrowRight size={15} />
-                </Link>
-                <Link to="/login" className="btn btn--outline btn--lg">
-                  Student Portal
-                </Link>
-              </div>
-
-              <div className="hero__note">
-                <span>
-                  500+ Enrolled Aspirants
-                  <span className="hero__note-divider" />
-                  Primary CEE & IOE Focus
-                  <span className="hero__note-divider" />
-                  Grade 11 & 12 Tuition
-                </span>
-              </div>
+          <div className="hero__content">
+            <div className="hero__eyebrow">
+              <span className="hero__eyebrow-line" />
+              CEE Medical, IOE Engineering & NEB Tuition Hub
             </div>
 
-            <div className="hero__mockup">
-              <div className="hero__mockup-header">
-                <div className="hero__mockup-dots">
-                  <span className="hero__mockup-dot hero__mockup-dot--red" />
-                  <span className="hero__mockup-dot hero__mockup-dot--yellow" />
-                  <span className="hero__mockup-dot hero__mockup-dot--green" />
-                </div>
-                <span className="hero__mockup-badge">Live System v2.6</span>
-              </div>
+            <h1 className="hero__title">
+              Empowering <em>CEE, IOE</em> &amp;<br />
+              NEB Grade 11 &amp; 12 Students
+            </h1>
 
-              <div className="hero__mockup-body">
-                <div className="hero__mockup-card">
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                    <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-primary)' }}>CEE Medical Prep Track</span>
-                    <span style={{ fontSize: 11, background: 'var(--green-100)', color: 'var(--green-700)', padding: '2px 8px', borderRadius: 12, fontWeight: 600 }}>Active</span>
-                  </div>
-                  <div style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 12 }}>
-                    Zoology & Botany High-Yield Drills · 1,450 MCQs Solved
-                  </div>
-                  <div style={{ width: '100%', height: 6, background: 'var(--neutral-200)', borderRadius: 3, overflow: 'hidden' }}>
-                    <div style={{ width: '78%', height: '100%', background: 'var(--green-600)', borderRadius: 3 }} />
-                  </div>
-                </div>
+            <p className="hero__subtitle">
+              Structured, high-quality education and complete entrance exam preparation modules accessible to every ambitious student without financial barriers.
+            </p>
 
-                <div className="hero__mockup-card">
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                    <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-primary)' }}>IOE Engineering Prep Track</span>
-                    <span style={{ fontSize: 11, background: 'var(--neutral-200)', color: 'var(--text-secondary)', padding: '2px 8px', borderRadius: 12, fontWeight: 600 }}>Weekly Routine</span>
-                  </div>
-                  <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
-                    Engineering Math & Physics Numerical Sheets Synced
-                  </div>
-                </div>
+            <div className="hero__actions">
+              <Link to="/register" className="btn btn--primary btn--lg">
+                Get Started Today
+                <IconArrowRight size={15} />
+              </Link>
+              <Link to="/login" className="btn btn--outline btn--lg">
+                Sign In To Dashboard
+              </Link>
+            </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 12px', background: 'var(--green-25)', border: '1px solid var(--green-200)', borderRadius: 10 }}>
-                  <div style={{ width: 8, height: 8, background: 'var(--green-600)', borderRadius: '50%' }} />
-                  <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--green-800)' }}>
-                    Grade 11 & 12 Science Tuition Support Included
-                  </span>
-                </div>
-              </div>
+            <div className="hero__note">
+              <span>
+                500+ Enrolled Aspirants
+                <span className="hero__note-divider" />
+                CEE & IOE Entrance Focus
+                <span className="hero__note-divider" />
+                Grade 11 & 12 Academic Support
+              </span>
             </div>
           </div>
         </div>
@@ -204,111 +159,48 @@ export default function Landing() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--space-6)' }} className="reveal">
-            <div style={{
-              background: 'var(--bg-primary)',
-              borderRadius: 'var(--radius-2xl)',
-              padding: 'var(--space-8)',
-              border: '1px solid var(--border-light)',
-              boxShadow: 'var(--shadow-sm)',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 'var(--space-4)'
-            }}>
-              <div style={{
-                width: 48,
-                height: 48,
-                borderRadius: 'var(--radius-xl)',
-                background: 'var(--green-900)',
-                color: 'var(--green-400)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontWeight: 800,
-                fontSize: '16px',
-                fontFamily: 'var(--font-heading)'
-              }}>
+          <div className="programs__grid reveal">
+            <div className="program-card">
+              <div className="program-card__badge">
                 CEE
               </div>
-              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', fontWeight: 800, color: 'var(--text-primary)' }}>
+              <h3 className="program-card__title">
                 Medical Entrance Preparation
               </h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6 }}>
+              <p className="program-card__desc">
                 Complete preparation for the Medical Education Commission (MEC) examination. Master high-yield Zoology, Botany, Physics, and Chemistry modules.
               </p>
-              <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: 'var(--space-4)', color: 'var(--green-600)', fontWeight: 600, fontSize: '13px' }}>
+              <div className="program-card__footer">
                 MCQ Drills & Past Entrance Solved Papers
               </div>
             </div>
 
-            <div style={{
-              background: 'var(--bg-primary)',
-              borderRadius: 'var(--radius-2xl)',
-              padding: 'var(--space-8)',
-              border: '1px solid var(--border-light)',
-              boxShadow: 'var(--shadow-sm)',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 'var(--space-4)'
-            }}>
-              <div style={{
-                width: 48,
-                height: 48,
-                borderRadius: 'var(--radius-xl)',
-                background: 'var(--green-900)',
-                color: 'var(--green-400)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontWeight: 800,
-                fontSize: '16px',
-                fontFamily: 'var(--font-heading)'
-              }}>
+            <div className="program-card">
+              <div className="program-card__badge">
                 IOE
               </div>
-              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', fontWeight: 800, color: 'var(--text-primary)' }}>
+              <h3 className="program-card__title">
                 Engineering Entrance Preparation
               </h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6 }}>
+              <p className="program-card__desc">
                 Focused coaching and practice modules tailored for engineering aspirants. Learn numerical shortcuts, advanced calculus, and physics problem solving.
               </p>
-              <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: 'var(--space-4)', color: 'var(--green-600)', fontWeight: 600, fontSize: '13px' }}>
+              <div className="program-card__footer">
                 Engineering Math · Physics · Chemistry · English
               </div>
             </div>
 
-            <div style={{
-              background: 'var(--bg-primary)',
-              borderRadius: 'var(--radius-2xl)',
-              padding: 'var(--space-8)',
-              border: '1px solid var(--border-light)',
-              boxShadow: 'var(--shadow-sm)',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 'var(--space-4)'
-            }}>
-              <div style={{
-                width: 48,
-                height: 48,
-                borderRadius: 'var(--radius-xl)',
-                background: 'var(--green-900)',
-                color: 'var(--green-400)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontWeight: 800,
-                fontSize: '16px',
-                fontFamily: 'var(--font-heading)'
-              }}>
+            <div className="program-card">
+              <div className="program-card__badge">
                 11-12
               </div>
-              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', fontWeight: 800, color: 'var(--text-primary)' }}>
+              <h3 className="program-card__title">
                 Grade 11 & 12 Academic Support
               </h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6 }}>
+              <p className="program-card__desc">
                 Complete tuition support across the NEB science curriculum. Get simplified chapter notes, formula sheets, and exam tips to excel in board examinations.
               </p>
-              <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: 'var(--space-4)', color: 'var(--green-600)', fontWeight: 600, fontSize: '13px' }}>
+              <div className="program-card__footer">
                 Full Science Faculty Support
               </div>
             </div>

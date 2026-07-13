@@ -306,3 +306,19 @@
     padding: var(--space-6);
   }
 }
+
+@media (max-width: 480px) {
+  .auth__card {
+    border-radius: var(--radius-xl);
+    box-shadow: none;
+    border: none;
+  }
+
+  .auth__form-side {
+    padding: 20px 12px;
+  }
+
+  .auth__title {
+    font-size: 24px;
+  }
+}

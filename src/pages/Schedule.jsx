@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react';
 import { useData } from '../context/DataContext';
+import { useAuth } from '../context/AuthContext';
 
 const subjectColors = {
   Physics: '#3B82F6',
@@ -12,10 +14,30 @@ const todayIndex = new Date().getDay();
 const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 export default function Schedule() {
-  const { classes = [] } = useData();
+  const { classes = [], getStudentEnrollments } = useData();
+  const { user } = useAuth();
+  const [enrolledCourseIds, setEnrolledCourseIds] = useState(new Set());
+
+  useEffect(() => {
+    let mounted = true;
+    async function fetchMyEnrollments() {
+      if (user?.id) {
+        const ids = await getStudentEnrollments(user.id);
+        if (mounted) setEnrolledCourseIds(new Set(ids));
+      }
+    }
+    fetchMyEnrollments();
+    return () => { mounted = false; };
+  }, [user?.id, getStudentEnrollments]);
+
+  const filteredClasses = classes.filter(cls => {
+    const cid = cls.course_id || cls.courseId;
+    if (!cid) return true;
+    return enrolledCourseIds.has(cid);
+  });
 
   const getClassesForDay = (dayName) => {
-    return classes.filter((c) => {
+    return filteredClasses.filter((c) => {
       if (!c.date) return false;
       return c.date.toLowerCase() === dayName.toLowerCase() || c.date.toLowerCase().includes(dayName.toLowerCase().slice(0, 3));
     });

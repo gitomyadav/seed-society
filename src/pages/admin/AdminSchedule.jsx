@@ -5,13 +5,14 @@ import { IconPlus, IconTrash, IconX } from '../../components/Icons';
 const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 export default function AdminSchedule() {
-  const { classes = [], addClass, deleteClass } = useData();
+  const { classes = [], courses = [], addClass, deleteClass } = useData();
   const [showModal, setShowModal] = useState(false);
 
+  const [selectedCourseId, setSelectedCourseId] = useState('');
   const [subject, setSubject] = useState('Physics');
   const [day, setDay] = useState('Sunday');
   const [time, setTime] = useState('06:00 AM - 07:30 AM');
-  const [teacher, setTeacher] = useState('Prof. Er. Lokesh Jha');
+  const [teacher, setTeacher] = useState('Lokesh Jha');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,9 +24,12 @@ export default function AdminSchedule() {
       teacher,
       date: day,
       time,
+      course_id: selectedCourseId || null,
+      courseId: selectedCourseId || null,
       status: 'scheduled',
     });
 
+    setSelectedCourseId('');
     setShowModal(false);
   };
 
@@ -70,7 +74,9 @@ export default function AdminSchedule() {
                 </td>
               </tr>
             ) : (
-              classes.map((cls) => (
+              classes.map((cls) => {
+                const targetCourse = courses.find(c => c.id === (cls.course_id || cls.courseId));
+                return (
                 <tr key={cls.id}>
                   <td style={{ fontWeight: 700, color: 'var(--text-primary)' }}>
                     {cls.date || 'Sunday'}
@@ -78,8 +84,17 @@ export default function AdminSchedule() {
                   <td style={{ fontWeight: 600, color: 'var(--green-600)' }}>
                     {cls.time || '06:00 AM'}
                   </td>
-                  <td style={{ fontWeight: 600 }}>
-                    {cls.subject || cls.topic || 'General Tuition'}
+                  <td>
+                    <div style={{ fontWeight: 600 }}>{cls.subject || cls.topic || 'General Tuition'}</div>
+                    {targetCourse ? (
+                      <span style={{ fontSize: '11px', background: 'var(--green-50)', color: 'var(--green-700)', padding: '2px 8px', borderRadius: 12, fontWeight: 600, display: 'inline-block', marginTop: 4 }}>
+                        Course: {targetCourse.title}
+                      </span>
+                    ) : (
+                      <span style={{ fontSize: '11px', background: 'var(--neutral-100)', color: 'var(--text-tertiary)', padding: '2px 8px', borderRadius: 12, fontWeight: 600, display: 'inline-block', marginTop: 4 }}>
+                        Open to All Students
+                      </span>
+                    )}
                   </td>
                   <td style={{ color: 'var(--text-secondary)' }}>
                     {cls.teacher || 'Faculty Team'}
@@ -94,7 +109,8 @@ export default function AdminSchedule() {
                     </button>
                   </td>
                 </tr>
-              ))
+              );
+            })
             )}
           </tbody>
         </table>
@@ -135,7 +151,26 @@ export default function AdminSchedule() {
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <div>
-                <label style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: 6 }}>Subject</label>
+                <label style={{ fontSize: '12px', fontWeight: 700, color: 'var(--green-700)', display: 'block', marginBottom: 6 }}>Select Target Course (Enrollment Required)</label>
+                <select
+                  className="input"
+                  value={selectedCourseId}
+                  onChange={(e) => {
+                    setSelectedCourseId(e.target.value);
+                    const c = courses.find(x => x.id === e.target.value);
+                    if (c && subject === 'Physics') setSubject(c.subject || c.title);
+                  }}
+                  style={{ width: '100%', fontWeight: 600, border: '1.5px solid var(--green-300)', background: 'var(--green-25)' }}
+                >
+                  <option value="">Open to All Students (General)</option>
+                  {courses.map(c => (
+                    <option key={c.id} value={c.id}>{c.title} ({c.subject || 'Prep'})</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: 6 }}>Subject / Title</label>
                 <input
                   type="text"
                   className="input"
@@ -177,7 +212,7 @@ export default function AdminSchedule() {
                 <input
                   type="text"
                   className="input"
-                  placeholder="e.g. Prof. Er. Lokesh Jha"
+                  placeholder="e.g. Lokesh Jha"
                   value={teacher}
                   onChange={(e) => setTeacher(e.target.value)}
                   style={{ width: '100%' }}

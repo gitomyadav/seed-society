@@ -53,10 +53,11 @@ export function DataProvider({ children }) {
       teacher: newClass.teacher,
       date: newClass.date,
       time: newClass.time,
-      meeting_id: newClass.meetingId || newClass.meeting_id,
-      password: newClass.password,
-      join_url: newClass.joinUrl || newClass.join_url,
+      meeting_id: newClass.meetingId || newClass.meeting_id || newClass.zoom?.meetingId || null,
+      password: newClass.password || newClass.zoom?.password || null,
+      join_url: newClass.joinUrl || newClass.join_url || newClass.zoom?.link || null,
       status: newClass.status || 'scheduled',
+      course_id: newClass.courseId || newClass.course_id || null,
     }).select().single();
     if (data && !error) {
       setClasses(prev => [data, ...prev]);
@@ -72,6 +73,8 @@ export function DataProvider({ children }) {
     if (fields.meeting_id !== undefined) updates.meeting_id = fields.meeting_id;
     if (fields.password !== undefined) updates.password = fields.password;
     if (fields.join_url !== undefined) updates.join_url = fields.join_url;
+    if (fields.courseId !== undefined) updates.course_id = fields.courseId;
+    if (fields.course_id !== undefined) updates.course_id = fields.course_id;
 
     const { error } = await supabase.from('classes').update(updates).eq('id', id);
     if (!error) {
